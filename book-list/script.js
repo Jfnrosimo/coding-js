@@ -6,6 +6,8 @@ class Book {
     }
 }
 
+
+
 class AddBook {
     
     addBookToList(book) {
@@ -77,7 +79,7 @@ document.getElementById('book-form').addEventListener('submit', function(e) {
     if(title === '' || author === '' || isbn === ''){
 
         //Error alert
-        addBook.showAlert('please fill all fields', 'unsuccessful')
+        addBook.showAlert('please fill all fields', 'error')
     
     }else {
 
@@ -85,7 +87,7 @@ document.getElementById('book-form').addEventListener('submit', function(e) {
         addBook.addBookToList(book);
 
         //Show success
-        addBook.showAlert('Book is added', 'sucess');
+        addBook.showAlert('Book is added', 'success');
 
         //Clear fields
         addBook.clearFields();
@@ -101,6 +103,9 @@ document.getElementById('book-list').addEventListener('click', function(e){
 	const addBook = new AddBook();
 
 	//Delete Book
+	addBook.deleteBook(e.target);
+
+	//Show message
 	addBook.showAlert('Book Removed!', 'success');
 
 	e.preventDefault();
