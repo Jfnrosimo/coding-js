@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  /* outline: 1px solid green; */
+}
+
 .success,
 .error {
   color: white;
@@ -5,10 +11,10 @@
   margin: 5px 0 15px;
 }
 
-.success {
-  background: green;
+.success{
+  background-color: green;
 }
 
 .error {
-  background: red;
+  background-color: red;
 }
