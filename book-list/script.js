@@ -1,5 +1,5 @@
 class Book {
-  constructor(title, author, isbn){
+  constructor(title,author,isbn){
     this.title = title;
     this.author = author;
     this.isbn = isbn;
@@ -7,7 +7,7 @@ class Book {
 }
 
 class AddBook {
-  
+
   addBookToList(book) {
     const list = document.getElementById('book-list');
     const row = document.createElement('tr');
@@ -16,10 +16,9 @@ class AddBook {
       <td>${book.title}</td>
       <td>${book.author}</td>
       <td>${book.isbn}</td>
-      <td><a href="" class="delete">X</a></td>
-
+      <td><a href="" class="delete">X</a><td>
     `;
-
+  
     list.appendChild(row);
   }
 
@@ -27,9 +26,8 @@ class AddBook {
     const div = document.createElement('div');
 
     //Add class name
-    div.className =  `alert ${className}`;
+    div.className = `alert ${className}`;
     div.appendChild(document.createTextNode(message));
-
     const container = document.querySelector('.container');
 
     //Get form
@@ -38,9 +36,8 @@ class AddBook {
     //Insert alert
     container.insertBefore(div, form);
 
-    //Timeout after 3 seconds
     setTimeout(() => 
-      document.querySelector('.alert').remove(),3000);
+      document.querySelector('.alert').remove(), 3000);
   }
 
   deleteBook(target) {
@@ -53,11 +50,11 @@ class AddBook {
     document.getElementById('title').value = '';
     document.getElementById('author').value = '';
     document.getElementById('isbn').value = '';
-
   }
+
 }
 
-//Event Listening for adding book
+//Event listener for adding book
 document.getElementById('book-form').addEventListener('submit', function(e) {
 
   //Get form values
@@ -68,31 +65,30 @@ document.getElementById('book-form').addEventListener('submit', function(e) {
   //Instantiate book
   const book = new Book(title, author, isbn);
 
-  //Instantiate addBook
+  //Instantiate add book
   const addBook = new AddBook();
 
   //Validate
-  if(title === '' || author === '' || isbn === ''){
+  if(title == '' || author == '' || isbn == ''){
 
-      //Error alert
-      addBook.showAlert('please fill all fields', 'error')
-  
+    //Error alert
+    addBook.showAlert('Please fill up all fields', 'error');
+
   }else {
 
-      //Add Book to list
-      addBook.addBookToList(book);
+    //Add book to list
+    addBook.addBookToList(book);
 
-      //Show success
-      addBook.showAlert('Book is added', 'success');
+    //Show success alert
+    addBook.showAlert('Book is added', 'success');
 
-      //Clear fields
-      addBook.clearFields();
+    addBook.clearFields();
   }
 
   e.preventDefault();
-}); 
+});
 
-//Event listening for delete
+//Event listener for delete
 document.getElementById('book-list').addEventListener('click', function(e) {
 
   //Instantiate add book
@@ -102,8 +98,7 @@ document.getElementById('book-list').addEventListener('click', function(e) {
   addBook.deleteBook(e.target);
 
   //Show message
-  addBook.showAlert('Book Removed!', 'success');
-  
-  e.preventDefault();
+  addBook.showAlert('Book removed', 'success');
 
-});
+  e.preventDefault();
+})
